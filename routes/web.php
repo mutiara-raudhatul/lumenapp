@@ -14,8 +14,25 @@
 */
 
 $router->get('/', function () use ($router) {
-    return ["Hello Hai..!!!"];
+    return ["Hello hellllooooooo..!!!"];
 });
+
+function random_strings($length_of_string)
+{
+  
+    // String of all alphanumeric character
+    $str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  
+    // Shuffle the $str_result and returns substring
+    // of specified length
+    return substr(str_shuffle($str_result), 
+                       0, $length_of_string);
+}
+
+$router->get('/key', function(){
+    return random_strings(32);
+});
+
 
 $router->get('/data', function () use ($router) {
     $results = app('db')->select("SELECT * FROM barang");
@@ -29,3 +46,5 @@ $router->post('/login','AuthController@login');
 $router->group(['middleware' => 'auth'], function() use ($router){
     $router->post('/logout', 'AuthController@logout');
 });
+
+$router->get('/home', 'ExampleController@index'); //panel info

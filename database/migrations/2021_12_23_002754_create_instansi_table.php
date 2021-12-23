@@ -11,15 +11,19 @@ class CreateInstansiTable extends Migration
      *
      * @return void
      */
+
+    protected $connection = 'pgsql';
+
     public function up()
     {
         Schema::create('instansi', function (Blueprint $table) {
-            $table->kode_instansi();
-            $table->nama_instansi();
-            $table->nohp();
-            $table->email();
-            $table->kategori();
-            $table->lokasi();
+            $table->id()->autoIncrement();
+            $table->string('kodeinstansi')->unique();
+            $table->string('namainstansi');
+            $table->string('nohp');
+            $table->string('email');
+            $table->string('kategori');
+            $table->string('lokasi');
             $table->timestamps();
         });
     }

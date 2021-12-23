@@ -11,15 +11,20 @@ class CreatePengaduanTable extends Migration
      *
      * @return void
      */
+
+    protected $connection = 'pgsql';
+
     public function up()
     {
         Schema::create('pengaduan', function (Blueprint $table) {
-            $table->nopengaduan();
-            $table->tglkejadian();
-            $table->jeniskejadian();
-            $table->lokasikejadian();
-            $table->fotokejadian();
-            $table->detailkejadian();
+            $table->id()->autoIncrement();
+            $table->string('nopengaduan')->unique();
+            $table->string('nik')->references('nik')->on('user');
+            $table->string('tglkejadian');
+            $table->string('jeniskejadian');
+            $table->string('lokasikejadian');
+            $table->string('fotokejadian');
+            $table->string('detailkejadian');
             $table->timestamps();
         });
     }

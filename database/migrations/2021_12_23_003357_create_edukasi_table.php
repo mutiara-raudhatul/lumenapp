@@ -17,7 +17,7 @@ class CreateEdukasiTable extends Migration
     {
         Schema::create('edukasi', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->string('kodedukasi')->unique(); php artisan migrate
+            $table->string('kodedukasi')->unique();
             $table->string('jenisedukasi');
             $table->string('kodeinstansi')->references('kodeinstansi')->on('instansi');
             $table->string('informasi');

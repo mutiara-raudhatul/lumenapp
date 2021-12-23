@@ -33,9 +33,13 @@ $router->get('/key', function(){
     return random_strings(32);
 });
 
+$router->get('/users', function () use ($router) {
+    $results = app('db')->select("SELECT * FROM userr");
+    return response()->json($results);
+});
 
-$router->get('/data', function () use ($router) {
-    $results = app('db')->select("SELECT * FROM barang");
+$router->get('/instansi', function () use ($router) {
+    $results = app('db')->select("SELECT * FROM instansi");
     return response()->json($results);
 });
 
@@ -47,4 +51,4 @@ $router->group(['middleware' => 'auth'], function() use ($router){
     $router->post('/logout', 'AuthController@logout');
 });
 
-$router->get('/home', 'ExampleController@index'); //panel info
+$router->get('/home', 'ExampleController@index'); 

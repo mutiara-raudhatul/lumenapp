@@ -17,6 +17,10 @@ $router->get('/', function () use ($router) {
     return ["Hello hellllooooooo..!!!"];
 });
 
+$router->get('/home', function () {
+    return view('layouts.master');
+});
+
 function random_strings($length_of_string)
 {
   

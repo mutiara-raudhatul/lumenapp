@@ -44,3 +44,12 @@ class AuthController extends Controller
         return response()->json(['message' => 'Pengguna telah logout']);
     }
 }
+
+// {
+//     "kodeinstansi" : "ins123"
+//     "namainstasnsi" : "Rumah Sakit Unand"
+//     "nohp" : "0812345678"
+//     "email" : "rsunand@gmail.com"
+//     "kategori" : "kesehatan"
+//     "lokasi" : "unand"
+// }

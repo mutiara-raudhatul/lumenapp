@@ -17,6 +17,37 @@ $router->get('/', function () use ($router) {
     return ["Welcome Si Adu Application"];
 });
 
+
+$router->group(['prefix' => 'v1'], function () use ($router) {
+
+    $router->get('/users', 'UserrController@index');
+    $router->post('/users', 'UserrController@store');
+    $router->post('/users/{id}', 'UserrController@update');
+    $router->delete('/users/{id}', 'UserrController@delete');
+
+    $router->get('/instansi', 'InstansiController@index');
+    $router->post('/instansi', 'InstansiController@store');
+    $router->post('/instansi/{id}', 'InstansiController@update');
+    $router->delete('/instansi/{id}', 'InstansiController@delete');
+
+    $router->get('/pengaduan', 'PengaduanController@index');
+    $router->post('/pengaduan', 'PengaduanController@store');
+    $router->post('/pengaduan/{id}', 'PengaduanController@update');
+    $router->delete('/pengaduan/{id}', 'PengaduanController@delete');
+
+    $router->get('/edukasi', 'EdukasiController@index');
+    $router->get('/edukasi', 'EdukasiController@store');
+    $router->post('/edukasi/{id}', 'EdukasiController@update');
+    $router->delete('/edukasi/{id}', 'EdukasiController@delete');
+
+    $router->get('/feedback', 'FeedbackController@index');
+    $router->get('/feedback', 'FeedbackController@store');
+    $router->post('/feedback/{id}', 'FeedbackController@update');
+    $router->delete('/feedback/{id}', 'FeedbackController@delete');
+
+});
+
+
 $router->get('/home', function () {
     return view('layouts.master');
 });
@@ -65,31 +96,4 @@ $router->get('/home', 'ExampleController@index');
 
 // });
 
-$router->group(['prefix' => 'v1'], function () use ($router) {
 
-    $router->get('/users', 'UserrController@index');
-    $router->post('/users', 'UserrController@store');
-    $router->post('/users/{id}', 'UserrController@update');
-    $router->delete('/users/{id}', 'UserrController@delete');
-
-    $router->get('/instansi', 'InstansiController@index');
-    $router->post('/instansi', 'InstansiController@store');
-    $router->post('/instansi/{id}', 'InstansiController@update');
-    $router->delete('/instansi/{id}', 'InstansiController@delete');
-
-    $router->get('/pengaduan', 'PengaduanController@index');
-    $router->post('/pengaduan', 'PengaduanController@store');
-    $router->post('/pengaduan/{id}', 'PengaduanController@update');
-    $router->delete('/pengaduan/{id}', 'PengaduanController@delete');
-
-    $router->get('/edukasi', 'EdukasiController@index');
-    $router->get('/edukasi', 'EdukasiController@store');
-    $router->post('/edukasi/{id}', 'EdukasiController@update');
-    $router->delete('/edukasi/{id}', 'EdukasiController@delete');
-
-    $router->get('/feedback', 'FeedbackController@index');
-    $router->get('/feedback', 'FeedbackController@store');
-    $router->post('/feedback/{id}', 'FeedbackController@update');
-    $router->delete('/feedback/{id}', 'FeedbackController@delete');
-
-});

@@ -77,7 +77,6 @@ class InstansiController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'kodeinstansi'   => 'required',
             'namainstansi' => 'required',
             'nohp' => 'required',
             'email' => 'required',
@@ -97,7 +96,6 @@ class InstansiController extends Controller
         } else {
 
             $data = Instansi::where('id', $id)->update([
-                'kodeinstansi'=> $request->input('kodeinstansi'),
                 'namainstansi'=> $request->input('namainstansi'),
                 'nohp'        => $request->input('nohp'),
                 'email'       => $request->input('email'),

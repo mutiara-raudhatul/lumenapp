@@ -14,7 +14,7 @@
 */
 
 $router->get('/', function () use ($router) {
-    return ["Hello hellllooooooo..!!!"];
+    return ["Welcome Si Adu Application"];
 });
 
 $router->get('/home', function () {
@@ -59,13 +59,18 @@ $router->get('/home', 'ExampleController@index');
 
 
 // --------------------------------------
-$router->get('/', function () use ($router) {
+// $router->get('/', function () use ($router) {
 
-    return $router->app->version();
+//     return $router->app->version();
 
-});
+// });
 
 $router->group(['prefix' => 'v1'], function () use ($router) {
+
+    $router->get('/users', 'UserrController@index');
+    $router->post('/users', 'UserrController@store');
+    $router->post('/users/{id}', 'UserrController@update');
+    $router->delete('/users/{id}', 'UserrController@delete');
 
     $router->get('/instansi', 'InstansiController@index');
     $router->post('/instansi', 'InstansiController@store');
@@ -88,21 +93,3 @@ $router->group(['prefix' => 'v1'], function () use ($router) {
     $router->delete('/feedback/{id}', 'FeedbackController@delete');
 
 });
-
-
-// $router->group(['prefix' => 'v1'], function () use ($router) {
-
-//     $router->get('/edukasi', 'EdukasiController@index');
-
-// });
-
-// $router->group(['prefix' => 'v1'], function () use ($router) {
-
-//     $router->get('/feedback', 'FeedbackController@index');
-
-// });
-
-// $router->group(['prefix' => 'v1'], function () use ($router) {
-
-
-// });

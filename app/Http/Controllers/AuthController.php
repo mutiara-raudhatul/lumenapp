@@ -45,11 +45,3 @@ class AuthController extends Controller
     }
 }
 
-// {
-//     "kodeinstansi" : "ins123"
-//     "namainstasnsi" : "Rumah Sakit Unand"
-//     "nohp" : "0812345678"
-//     "email" : "rsunand@gmail.com"
-//     "kategori" : "kesehatan"
-//     "lokasi" : "unand"
-// }

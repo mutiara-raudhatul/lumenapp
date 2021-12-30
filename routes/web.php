@@ -56,3 +56,53 @@ $router->group(['middleware' => 'auth'], function() use ($router){
 });
 
 $router->get('/home', 'ExampleController@index'); 
+
+
+// --------------------------------------
+$router->get('/', function () use ($router) {
+
+    return $router->app->version();
+
+});
+
+$router->group(['prefix' => 'v1'], function () use ($router) {
+
+    $router->get('/instansi', 'InstansiController@index');
+    $router->post('/instansi', 'InstansiController@store');
+    $router->post('/instansi/{id}', 'InstansiController@update');
+    $router->delete('/instansi/{id}', 'InstansiController@delete');
+
+    $router->get('/pengaduan', 'PengaduanController@index');
+    $router->post('/pengaduan', 'PengaduanController@store');
+    $router->post('/pengaduan/{id}', 'PengaduanController@update');
+    $router->delete('/pengaduan/{id}', 'PengaduanController@delete');
+
+    $router->get('/edukasi', 'EdukasiController@index');
+    $router->get('/edukasi', 'EdukasiController@store');
+    $router->post('/edukasi/{id}', 'EdukasiController@update');
+    $router->delete('/edukasi/{id}', 'EdukasiController@delete');
+
+    $router->get('/feedback', 'FeedbackController@index');
+    $router->get('/feedback', 'FeedbackController@store');
+    $router->post('/feedback/{id}', 'FeedbackController@update');
+    $router->delete('/feedback/{id}', 'FeedbackController@delete');
+
+});
+
+
+// $router->group(['prefix' => 'v1'], function () use ($router) {
+
+//     $router->get('/edukasi', 'EdukasiController@index');
+
+// });
+
+// $router->group(['prefix' => 'v1'], function () use ($router) {
+
+//     $router->get('/feedback', 'FeedbackController@index');
+
+// });
+
+// $router->group(['prefix' => 'v1'], function () use ($router) {
+
+
+// });

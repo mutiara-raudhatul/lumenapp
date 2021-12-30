@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Validator;
 
-class EdukasiController extends Controller
+class UserrController extends Controller
 
 {
 

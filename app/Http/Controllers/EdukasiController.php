@@ -19,13 +19,9 @@ class EdukasiController extends Controller
         $data = Edukasi::latest()->get();
 
         return response()->json([
-
             'success' => true,
-
             'message' =>'Data Edukasi',
-
             'data'    => $data
-
         ], 200);
 
     }
@@ -37,9 +33,10 @@ class EdukasiController extends Controller
             'kodedukasi'   => 'required',
             'jenisedukasi' => 'required',
             'kodeinstansi' => 'required',
+            'tanggalpost' => 'required',
+            'kategoriedu' => 'required',
+            'judul' => 'required',
             'informasi' => 'required',
-            'created_at' => 'required',
-            'updated_at' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -55,13 +52,15 @@ class EdukasiController extends Controller
                 'kodedukasi'=> $request->input('kodedukasi'),
                 'jenisedukasi'=> $request->input('jenisedukasi'),
                 'kodeinstansi'        => $request->input('kodeinstansi'),
+                'tanggalpost'       => $request->input('tanggalpost'),
+                'kategoriedu'       => $request->input('kategoriedu'),
+                'judul'       => $request->input('judul'),
                 'informasi'       => $request->input('informasi'),
                 'created_at'  => $request->input('created_at'),
                 'updated_at'  => $request->input('updated_at'),
             ]);
 
             if ($edukasi) {
-
                 return response()->json([
                     'success' => true,
                     'message' => 'Data Anda Berhasil Disimpan!',
@@ -83,9 +82,10 @@ class EdukasiController extends Controller
             'kodedukasi'   => 'required',
             'jenisedukasi' => 'required',
             'kodeinstansi' => 'required',
+            'tanggalpost' => 'required',
+            'kategoriedu' => 'required',
+            'judul' => 'required',
             'informasi' => 'required',
-            'created_at' => 'required',
-            'updated_at' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -101,6 +101,9 @@ class EdukasiController extends Controller
                 'kodedukasi'=> $request->input('kodedukasi'),
                 'jenisedukasi'=> $request->input('jenisedukasi'),
                 'kodeinstansi'        => $request->input('kodeinstansi'),
+                'tanggalpost'       => $request->input('tanggalpost'),
+                'kategoriedu'       => $request->input('kategoriedu'),
+                'judul'       => $request->input('judul'),
                 'informasi'       => $request->input('informasi'),
                 'created_at'  => $request->input('created_at'),
                 'updated_at'  => $request->input('updated_at'),

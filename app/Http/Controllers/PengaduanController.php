@@ -19,13 +19,9 @@ class PengaduanController extends Controller
         $data = Pengaduan::latest()->get();
 
         return response()->json([
-
             'success' => true,
-
             'message' =>'Data Pengaduan',
-
             'data'    => $data
-
         ], 200);
 
     }

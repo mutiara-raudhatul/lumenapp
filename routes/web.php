@@ -17,8 +17,14 @@ $router->get('/', function () use ($router) {
     return ["Welcome Si Adu Application"];
 });
 
+$router->post('/register', 'AuthController@register');
+$router->post('/login', 'AuthController@login');    
+$router->group(['middleware' => 'auth'], function() use ($router){
+    $router->get('/detail/{id}', 'UserrController@show');
+    $router->post('/logout', 'AuthController@logout');
+});
 
-$router->group(['prefix' => 'v1'], function () use ($router) {
+$router->group(['prefix' => 'api'], function () use ($router) {
 
     $router->get('/users', 'UserrController@index');
     $router->post('/users', 'UserrController@store');
@@ -36,12 +42,12 @@ $router->group(['prefix' => 'v1'], function () use ($router) {
     $router->delete('/pengaduan/{id}', 'PengaduanController@delete');
 
     $router->get('/edukasi', 'EdukasiController@index');
-    $router->get('/edukasi', 'EdukasiController@store');
+    $router->post('/edukasi', 'EdukasiController@store');
     $router->post('/edukasi/{id}', 'EdukasiController@update');
     $router->delete('/edukasi/{id}', 'EdukasiController@delete');
 
     $router->get('/feedback', 'FeedbackController@index');
-    $router->get('/feedback', 'FeedbackController@store');
+    $router->post('/feedback', 'FeedbackController@store');
     $router->post('/feedback/{id}', 'FeedbackController@update');
     $router->delete('/feedback/{id}', 'FeedbackController@delete');
 
@@ -64,29 +70,29 @@ function random_strings($length_of_string)
                        0, $length_of_string);
 }
 
-$router->get('/key', function(){
-    return random_strings(32);
-});
+// $router->get('/key', function(){
+//     return random_strings(32);
+// });
 
-$router->get('/users', function () use ($router) {
-    $results = app('db')->select("SELECT * FROM userr");
-    return response()->json($results);
-});
+// $router->get('/users', function () use ($router) {
+//     $results = app('db')->select("SELECT * FROM userr");
+//     return response()->json($results);
+// });
 
-$router->get('/instansi', function () use ($router) {
-    $results = app('db')->select("SELECT * FROM instansi");
-    return response()->json($results);
-});
+// $router->get('/instansi', function () use ($router) {
+//     $results = app('db')->select("SELECT * FROM instansi");
+//     return response()->json($results);
+// });
 
-$router->post('/register', 'UserController@register');
-$router->post('/login','AuthController@login');
+// $router->post('/register', 'UserController@register');
+// $router->post('/login','AuthController@login');
 
 
-$router->group(['middleware' => 'auth'], function() use ($router){
-    $router->post('/logout', 'AuthController@logout');
-});
+// $router->group(['middleware' => 'auth'], function() use ($router){
+//     $router->post('/logout', 'AuthController@logout');
+// });
 
-$router->get('/home', 'ExampleController@index'); 
+// $router->get('/home', 'ExampleController@index'); 
 
 
 // --------------------------------------

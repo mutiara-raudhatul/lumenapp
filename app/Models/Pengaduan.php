@@ -11,7 +11,7 @@ class Pengaduan extends Model
 
     protected $fillable = [
 
-        'nopengaduan', 'nik', 'tglkejadian', 'jeniskejadian', 'lokasikejadian', 'fotokejadian', 'detailkejadian', 'created_at', 'updated_at',
+        'nopengaduan', 'nik', 'tglkejadian', 'jeniskejadian', 'lokasikejadian', 'fotokejadian', 'detailkejadian',
     
     ];
 

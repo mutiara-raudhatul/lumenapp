@@ -11,7 +11,7 @@ class Feedback extends Model
 
     protected $fillable = [
 
-        'kodefeedback', 'nik', 'kodeinstansi', 'kodeedukasi', 'feedback', 'created_at', 'updated_at',
+        'kodefeedback', 'nik', 'kodeinstansi', 'kodeedukasi', 'feedback',
     
     ];
 

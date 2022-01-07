@@ -16,6 +16,7 @@ class CreateUserrTable extends Migration
         Schema::create('userr', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->string('nik')->unique();
+            $table->string('username')->unique();
             $table->string('namalengkap');
             $table->string('jeniskelamin');
             $table->string('tempatlahir');

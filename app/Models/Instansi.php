@@ -11,7 +11,7 @@ class Instansi extends Model
 
     protected $fillable = [
 
-        'kodeinstansi', 'namainstansi', 'nohp', 'email', 'kategori', 'lokasi', 'created_at', 'updated_at',
+        'kodeinstansi', 'namainstansi', 'nohp', 'email', 'kategori', 'lokasi',
     
     ];
 

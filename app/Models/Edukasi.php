@@ -11,7 +11,7 @@ class Edukasi extends Model
 
     protected $fillable = [
 
-        'kodedukasi', 'jenisedukasi', 'kodeinstansi', 'informasi', 'created_at', 'updated_at',
+        'kodedukasi', 'jenisedukasi', 'kodeinstansi', 'tanggalpost', 'kategoriedu', 'judul', 'informasi'
     
     ];
 

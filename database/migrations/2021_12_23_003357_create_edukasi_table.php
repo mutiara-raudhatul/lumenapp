@@ -20,6 +20,9 @@ class CreateEdukasiTable extends Migration
             $table->string('kodedukasi')->unique();
             $table->string('jenisedukasi');
             $table->string('kodeinstansi')->references('kodeinstansi')->on('instansi');
+            $table->string('tanggalpost');
+            $table->string('kategoriedu');
+            $table->string('judul');
             $table->string('informasi');
             $table->timestamps();
         });

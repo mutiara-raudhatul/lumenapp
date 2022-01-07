@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Userr;
+use App\Userr;
 
 use Illuminate\Http\Request;
 
@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\Validator;
 class UserrController extends Controller
 
 {
+
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index() 
 
@@ -26,19 +32,37 @@ class UserrController extends Controller
 
     }
 
+    public function show($id) 
+    {
+        $userr = Userr::find($id);
+        if($userr){
+            return response()->json([
+                'success' => true,
+                'message' =>'User Found!',
+                'data'    => $userr
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' =>'User Not Found!',
+                'data'    => ''
+            ], 404);
+        }
+
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'nik'   => 'required',
+            'username'   => 'required',
             'namalengkap' => 'required',
             'jeniskelamin' => 'required',
             'tempatlahir' => 'required',
             'tgllahir' => 'required',
             'email' => 'required',
             'password' => 'required',
-            'token' => 'required',
-            'created_at' => 'required',
-            'updated_at' => 'required',
+
         ]);
 
         if ($validator->fails()) {
@@ -52,6 +76,7 @@ class UserrController extends Controller
         } else {
             $userr= Userr::create([
                 'nik'=> $request->input('nik'),
+                'username'=> $request->input('username'),
                 'namalengkap'=> $request->input('namalengkap'),
                 'jeniskelamin'        => $request->input('jeniskelamin'),
                 'tempatlahir'       => $request->input('tempatlahir'),
@@ -84,6 +109,7 @@ class UserrController extends Controller
 
         $validator = Validator::make($request->all(), [
             'nik'   => 'required',
+            'username' => 'required',
             'namalengkap' => 'required',
             'jeniskelamin' => 'required',
             'tempatlahir' => 'required',
@@ -106,6 +132,7 @@ class UserrController extends Controller
 
             $data = Userr::where('id', $id)->update([
                 'nik'=> $request->input('nik'),
+                'username'=> $request->input('username'),
                 'namalengkap'=> $request->input('namalengkap'),
                 'jeniskelamin'        => $request->input('jeniskelamin'),
                 'tempatlahir'       => $request->input('tempatlahir'),
